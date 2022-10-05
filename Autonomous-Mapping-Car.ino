@@ -1,15 +1,15 @@
-#include <dummy.h>
+//Projeto italo e angeli
 #include <NewPing.h>        //Ultrasonic sensor function library. You must install this library
 
 //our L298N control pins
-const int LeftMotorForward = 7;
-const int LeftMotorBackward = 6;
-const int RightMotorForward = 4;
-const int RightMotorBackward = 5;
+const int LeftMotorForward = 18;//7
+const int LeftMotorBackward = 19;//6
+const int RightMotorForward = 22;//4
+const int RightMotorBackward = 23;//5
 
 //sensor pins
-#define trig_pin A1 //analog input 1
-#define echo_pin A2 //analog input 2
+#define trig_pin 16 //analog input 1 - A1
+#define echo_pin 17 //analog input 2 - A2
 
 #define maximum_distance 200
 boolean goesForward = false;
@@ -23,8 +23,6 @@ void setup(){
   pinMode(LeftMotorForward, OUTPUT);
   pinMode(LeftMotorBackward, OUTPUT);
   pinMode(RightMotorBackward, OUTPUT);
-
-
 }
 
 int readPing(){
@@ -85,8 +83,6 @@ void turnRight(){
   
   digitalWrite(LeftMotorBackward, LOW);
   digitalWrite(RightMotorBackward, LOW);
- 
-  
   
 }
 
@@ -115,7 +111,7 @@ void loop(){
   moveForward(); 
 
   distance = readPing();
-  delay(100);
+  delay(50);
 
   if (distance <= 20){
     moveStop();
