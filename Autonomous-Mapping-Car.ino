@@ -1,18 +1,17 @@
 //Projeto italo e angeli
 #include <NewPing.h>        //Ultrasonic sensor function library.
-//#include <TimerOne.h>
 
-//ROxo, cinza, branco e preto
-//our L298N control pins // Portas no arduino comentado
-const int LeftMotorForward = 18;//7
-const int LeftMotorBackward = 19;//6
-const int RightMotorForward = 4;//4
-const int RightMotorBackward = 5;//5
+//Roxo, cinza, branco e preto
+//our L298N control pins 
+const int LeftMotorForward = 18;
+const int LeftMotorBackward = 19;
+const int RightMotorForward = 4;
+const int RightMotorBackward = 5;
 const int PWMMotorA = 12;
 const int PWMMotorB = 13;
 
-const byte enconderA = 26;//7
-const byte enconderB = 27;//6
+const byte enconderA = 26;
+const byte enconderB = 27;
 
 unsigned int counter_A = 0;
 unsigned int counter_B = 0;
@@ -78,8 +77,8 @@ void IRAM_ATTR onTimer() {
 }
 
 //sensor pins
-#define trig_pin 16 //analog input 1 - A1
-#define echo_pin 17 //analog input 2 - A2
+#define trig_pin 17 //analog input 1 - A1
+#define echo_pin 16 //analog input 2 - A2
 
 #define maximum_distance 200
 boolean goesForward = false;
@@ -122,7 +121,7 @@ int readPing(){
   delay(70);
   int cm = sonar.ping_cm();
   if (cm==0){
-    cm=250;
+    cm=200;
   }
   return cm;
 }
@@ -352,12 +351,12 @@ void loop(){
     delay(500);
     SpinRight(20, 200);  // Spin right 20 steps at 255 speed
     delay(500);  // Wait one second
-   MoveForward(CMtoSteps(50), 200);  // Forward 10 steps at 150 speed
+   MoveForward(CMtoSteps(50), 220);  // Forward 10 steps at 150 speed
 
   }
   else{
-    MoveForward(CMtoSteps(50), 200); 
-  //}
+   MoveForward(CMtoSteps(70), 230);
+  }
   distance = readPing();
-    //Serial.print(distance);
+    Serial.print(distance);
 }
